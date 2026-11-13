@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "repro": "node repro.mjs"
   },
   "dependencies": {
-    "nitro": "latest"
+    "nitro": "3.0.261103-rc"
   },
   "devDependencies": {
     "@types/node": "latest",
