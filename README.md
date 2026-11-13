@@ -12,6 +12,8 @@ The starter's changes:
 
 ## Run
 
+Node.js >= 22.22.0 (Nitro's minimum) and pnpm.
+
 ```bash
 pnpm install
 pnpm repro
@@ -44,8 +46,17 @@ neither the plugin's `close` hook nor the route's `close` handler runs.
 
 ## With the timeout passed to the worker
 
-Patching `shutdownRunner()` in `node_modules/nitro/dist/_dev2.mjs` to forward its timeout, as env-runner's own
-`RunnerManager.shutdown()` does:
+The [`fix/attempt-1`](https://github.com/SharkEzz/nitro-ws-shutdown-repro/tree/fix/attempt-1) branch patches `shutdownRunner()` in `nitro/dist/_dev2.mjs`
+(`patches/nitro.patch`, applied by pnpm's `patchedDependencies` in `pnpm-workspace.yaml`) to forward its timeout, as
+env-runner's own `RunnerManager.shutdown()` does:
+
+```bash
+git checkout fix/attempt-1
+pnpm install
+pnpm repro
+```
+
+The patch:
 
 ```diff
 -			manager.sendMessage({ event: "shutdown" });
