@@ -1,0 +1,13 @@
+diff --git a/dist/_dev2.mjs b/dist/_dev2.mjs
+index 5519d147ee922c064c6317d27aa06d21861247dd..3932c8cd214b3344d8d3932ba0d19ab7d9f69b45 100644
+--- a/dist/_dev2.mjs
++++ b/dist/_dev2.mjs
+@@ -249,7 +249,7 @@ async function shutdownRunner(manager, opts = {}) {
+ 		};
+ 		manager.onMessage(listener);
+ 		try {
+-			manager.sendMessage({ event: "shutdown" });
++			manager.sendMessage({ event: "shutdown", timeout: SHUTDOWN_TIMEOUT });
+ 		} catch (error) {
+ 			opts.warn?.(`Could not send shutdown message to the dev worker: ${error instanceof Error ? error.message : String(error)}`);
+ 			done();

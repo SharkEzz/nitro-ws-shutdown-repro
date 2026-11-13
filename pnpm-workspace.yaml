@@ -1,0 +1,2 @@
+patchedDependencies:
+  nitro: patches/nitro.patch
